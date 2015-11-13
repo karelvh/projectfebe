@@ -1,0 +1,13 @@
+//normalize
+@import "normalize.scss";
+
+//variables
+@import "variables.scss";
+//@import "fonts.scss";
+
+//PAGE STYLING
+@import "style.scss";
+
+//DISABLE BEFORE DEPLOYEMENT
+//DEBUGGING
+@import "debug.scss";
