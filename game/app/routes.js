@@ -16,7 +16,7 @@ module.exports = function(app, passport) {
         // process the login form
         app.post('/login', function(req, res, next) {
             if (!req.body.username || !req.body.password) {
-                return res.json({ error: 'username and Password required' });
+                return res.json({ error: 'Username and Password required' });
             }
             passport.authenticate('local-login', function(err, user, info) {
                 if (err) {
@@ -39,7 +39,7 @@ module.exports = function(app, passport) {
         // process the signup form
         app.post('/signup', function(req, res, next) {
             if (!req.body.username || !req.body.password) {
-                return res.json({ error: 'username and Password required' });
+                return res.json({ error: 'Username and Password required' });
             }
             passport.authenticate('local-signup', function(err, user, info) {
                 if (err) {
@@ -77,7 +77,7 @@ module.exports = function(app, passport) {
     // locally --------------------------------
         app.post('/connect/local', function(req, res, next) {
             if (!req.body.username || !req.body.password) {
-                return res.json({ error: 'username and Password required' });
+                return res.json({ error: 'Username and Password required' });
             }
             passport.authenticate('local-signup', function(err, user, info) {
                 if (err) {
