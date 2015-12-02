@@ -6,11 +6,6 @@
                     templateUrl: '/views/profile.html',
                     controller: 'ProfileController',
                     controllerAs: 'profile'
-                })
-                .when('/connect/local', {
-                    templateUrl: '/views/connect-local.html',
-                    controller: 'SecondarySignupController',
-                    controllerAs: 'profile'
                 });
 
             $locationProvider.html5Mode(true);

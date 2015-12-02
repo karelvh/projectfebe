@@ -42,16 +42,6 @@
                         console.log(data);
                     });
             }
-            $scope.connect = function() {
-                $http
-                    .post('/connect/local', {
-                        username: this.username,
-                        password: this.password
-                    })
-                    .success(function(data) {
-                        console.log(data);
-                    });
-            }
         }])
         .controller('SignupForm', ['$http', '$scope', function($http, $scope) {
             $scope.signup = function() {

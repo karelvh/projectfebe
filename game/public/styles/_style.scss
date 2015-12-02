@@ -35,3 +35,27 @@ a.btn, button, input.form-control {
     margin: 1rem auto;
     display: block;
 }
+
+.growl {
+    width: 288px;
+    min-width: 20vh;
+    margin: 1rem auto;
+
+    .growl-item {
+        // width: 200px;
+        // min-width: 20vw;
+        // margin: 1rem auto;
+        // display: block;
+
+        & > button {
+            width: 20%;
+            min-width: 20%;
+            // display: inline-block;
+        }
+        .growl-error-message-text {
+            width: 80%;
+            min-width: 80%;
+            // display: inline-block;
+        }
+    }
+}

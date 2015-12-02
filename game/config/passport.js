@@ -50,7 +50,7 @@ module.exports = function(passport) {
 
                 // if no user is found, return the message
                 if (!user)
-                    return done(null, { error: 'No user found. ' });
+                    return done(null, { error: 'No user with that username found. ' });
 
                 if (!user.validPassword(password))
                     return done(null, { error: 'Oops! Wrong password.' });
@@ -103,17 +103,6 @@ module.exports = function(passport) {
                             return done(null, newUser);
                         });
                     }
-                });
-            // if the user is logged in but has no local account...
-            } else if ( !req.user.local.username ) {
-                // ...presumably they're trying to connect a local account
-                var user            = req.user;
-                    user.local.username    = username;
-                user.local.password = user.generateHash(password);
-                user.save(function(err) {
-                    if (err)
-                        throw err;
-                    return done(null, user);
                 });
             } else {
                 // user is logged in and already has a local account. Ignore signup. (You should log out before trying to create a new account, user!)

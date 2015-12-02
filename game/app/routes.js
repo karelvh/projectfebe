@@ -74,27 +74,6 @@ module.exports = function(app, passport) {
 // AUTHORIZE (ALREADY LOGGED IN / CONNECTING OTHER SOCIAL ACCOUNT) =============
 // =============================================================================
 
-    // locally --------------------------------
-        app.post('/connect/local', function(req, res, next) {
-            if (!req.body.username || !req.body.password) {
-                return res.json({ error: 'Username and Password required' });
-            }
-            passport.authenticate('local-signup', function(err, user, info) {
-                if (err) {
-                    return res.json(err);
-                }
-                if (user.error) {
-                    return res.json({ error: user.error });
-                }
-                req.logIn(user, function(err) {
-                    if (err) {
-                        return res.json(err);
-                    }
-                    return res.json({ redirect: '/profile' });
-                });
-            })(req, res);
-        });
-
     // facebook -------------------------------
 
         // send to facebook to do the authentication
