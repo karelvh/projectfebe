@@ -1,3 +1,4 @@
 - when new user is created, set user.score to 0
 - when logging in route to game.html instead of profile page.
 - let users create an account without a password. (placeholder text > Password is not needed but is safer.)
+- Jasmine with a few tests
