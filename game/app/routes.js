@@ -29,7 +29,8 @@ module.exports = function(app, passport) {
                     if (err) {
                         return res.json(err);
                     }
-                    return res.json({ redirect: '/profile' });
+                    // return res.json({ redirect: '/profile' });
+                    return res.json({ redirect: '/game' });
                 });
             })(req, res);
         });
@@ -52,7 +53,8 @@ module.exports = function(app, passport) {
                     if (err) {
                         return res.json(err);
                     }
-                    return res.json({ redirect: '/profile' });
+                    return res.json({ redirect: '/game' });
+                    // return res.json({ redirect: '/profile' });
                 });
             })(req, res);
         });
