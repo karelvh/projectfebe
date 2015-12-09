@@ -1,4 +1,4 @@
-- when new user is created, set user.score to 0
-- when logging in route to game.html instead of profile page.
-- let users create an account without a password. (placeholder text > Password is not needed but is safer.)
-- Jasmine with a few tests
+- ~~when new user is created, set user.score to 0~~
+- let users create an account without a password. (placeholder text > Password is not needed but is safer.) This requires some extra checks in passport.js
+- when the user is logged in redirect to '/' but via the home controller you provide the username to angular, on index.html you can then load in the view (in the ng-view container) that's needed (if not logged in the login buttons, if logged in the actual game).
+- Jasmine with a unit test
