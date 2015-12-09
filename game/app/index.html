@@ -1,0 +1,68 @@
+<!doctype html>
+<html ng-app="app">
+  <head>
+    <base href="/"> <!-- needed for html5mode -->
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+    <!-- inject:css -->
+    <link rel="stylesheet" href="/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/dist/css/main.min.css">
+    <!-- endinject -->
+
+  </head>
+  <body>
+    <div class="header">
+      <div class="navbar navbar-default" role="navigation">
+        <div class="container">
+          <div class="navbar-header">
+
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#js-navbar-collapse">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+
+            <a class="navbar-brand" href="/game">GAME</a>
+          </div>
+
+          <div class="collapse navbar-collapse" id="js-navbar-collapse">
+
+            <ul class="nav navbar-nav">
+              <li><a ng-href="/login">login</a></li>
+              <li><a ng-href="/signup">sign up</a></li>
+              <li><a ng-href="/profile">profile</a></li>
+              <li><a logout href="/logout">logout</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container" ng-view>
+    </div>
+
+    <div class="footer">
+      <div class="container">
+        <p></span> &copy; 2015 Karel Vh & Glenn Vw</p>
+      </div>
+    </div>
+
+    <!-- inject:js -->
+    <script src="/dist/js/vendor/angular.js"></script>
+    <script src="/dist/js/angular-modules/angular-route.min.js"></script>
+    <script src="/dist/js/app.min.js"></script>
+    <script src="/dist/js/growl.js"></script>
+    <!-- endinject -->
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular-route.min.js"></script>
+    <script src="scripts/factories/httpInterceptor.js"></script>
+    <script src="scripts/directives/common.js"></script>
+    <script src="scripts/controllers/profile.js"></script>
+    <script src="scripts/controllers/login.js"></script>
+    <script src="scripts/controllers/game.js"></script>
+    <!-- CHECK IF ALL CONTROLLERS ARE INCLUDED IN MAIN.JS -->
+    <script src="scripts/controllers/main.js"></script>
+</body>
+</html>
