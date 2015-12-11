@@ -12,7 +12,7 @@ var autoprefixer = require("gulp-autoprefixer");
 var inject = require("gulp-inject");
 var series = require('stream-series');
 
-var jsFiles = ['*.js', './app/**/*.js']
+var jsFiles = ['*.js', './app/**/*.js'];
 
 gulp.task("default", function(){
     var styleWatcher = gulp.watch("./app/styles/**/*.scss", ["css"]);
@@ -29,7 +29,8 @@ gulp.task("js", function(){
     .pipe(sourcemaps.init())
     .pipe(concat("app.min.js"))
     .pipe(sourcemaps.write())
-    .pipe(uglify())
+    //disable for deployment
+    // .pipe(uglify())
     .pipe(gulp.dest('./app/dist/js'))
     .pipe(notify({message: 'js built'}));
 });
@@ -43,10 +44,10 @@ gulp.task("css", function () {
     .pipe(csslint.reporter())
     .pipe(autoprefixer())
     .pipe(sourcemaps.init())
-    .pipe(concat("main.min.css"))
-    // .pipe(cssMinifier())
-    //disable for deployment
+    .pipe(concat("app.min.css"))
     .pipe(sourcemaps.write())
+    //disable for deployment
+    // .pipe(cssMinifier())
     .pipe(gulp.dest("./app/dist/css"))
     .pipe(notify({message: 'stylesheet built'}));
 });

@@ -5,8 +5,8 @@ var bcrypt = require('bcrypt-nodejs'); //encryption we dont send or store plain 
 var userSchema = mongoose.Schema({
     local: {
         //all field are not required by default so validate in passport login/signup logic
-        username: String,
-        password: String,
+        username: { type: String, unique: true},
+        password: { type: String, required: false},
         score: Number
     }
 });

@@ -19,8 +19,11 @@ mongoose.connect(configDB.url); //connect to database
 require('./server/config/passport.js')(passport); // passing passport for config. pass passing passport pass
 
 //express config
+//get post request logging
 app.use(morgan('short'));
+//parse cookies for login purposes
 app.use(cookieParser());
+//get data from html froms
 app.use(bodyParser());
 
 //passport reqs
