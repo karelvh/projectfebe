@@ -1,0 +1,71 @@
+.page--login {
+
+    h1 {
+        margin: 100px 0 20px 0;
+        color: $color-blue-dark;
+        text-align: center;
+    }
+
+    input {
+        font-size: $font-medium;
+        font-weight: 500;
+        color: $color-blue-dark;
+        letter-spacing: 1px;
+        text-decoration: none;
+        padding:15px 5px;
+        display: block;
+        width: 25%;
+        transition:all 0.2s;
+        margin: 10px auto;
+    }
+
+    button {
+        font-size: $font-medium;
+        font-weight: 500;
+        color: $color-white;
+        letter-spacing: 1px;
+        text-decoration: none;
+        background: $color-blue-light;
+        padding:15px 5px;
+        display: block;
+        width: 25%;
+        text-align: center;
+        transition:all 0.2s;
+        margin: 10px auto 40px auto;
+        border: none;
+
+        &:hover {
+            background: $color-green;
+        }
+    }
+
+    .growl {
+        display: block;
+        width: 25%;
+        margin: 0 auto;
+        color: $color-red;
+
+        button {
+            display: none;
+        }
+
+    }
+
+    span {
+        display: block;
+        width: 25%;
+        border-top: 1px solid rgba($color-blue-dark, .4);
+        margin: 0 auto;
+    }
+
+    p {
+        margin: 20px 0;
+        color: $color-blue-dark;
+        text-align: center;
+
+        a {
+            text-decoration: underline;
+            color: $color-blue-medium;
+        }
+    }
+}

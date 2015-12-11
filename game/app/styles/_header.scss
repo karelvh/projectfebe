@@ -1,0 +1,70 @@
+.header {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px 0;
+    font-size: $font-medium;
+    font-weight: 500;
+
+    a {
+        color: $color-white;
+        letter-spacing: 1px;
+        text-decoration: none;
+        background: $color-blue-light;
+        padding:20px 5px;
+        display: inline-block;
+        width: 100%;
+        text-align: center;
+        transition: all 0.2s;
+    }
+
+    a:hover {
+        background: $color-blue-medium;
+    }
+
+    .navbar--button_logout:hover {
+        background: $color-red;
+    }
+
+    .navbar--button_brand:hover {
+        background: $color-green;
+    }
+
+    @media screen and (max-width: $break-medium) {
+        padding: 0;
+    }
+}
+.navbar{
+
+    ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+    }
+
+    li {
+        flex: 1;
+    }
+
+    .navbar--button_brand {
+        flex: 5;
+    }
+
+    @media screen and (max-width: $break-medium) {
+        ul {
+            flex-wrap: wrap;
+        }
+        li {
+            flex: 1 1 25%;
+        }
+        .navbar--button_brand {
+            flex: 2 1 50%;
+        }
+    }
+
+    @media screen and (max-width: $break-small) {
+        li {
+            flex-basis: 100%;
+        }
+    }
+}
