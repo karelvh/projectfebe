@@ -1,4 +1,4 @@
-.page--login {
+.page--signup {
 
     h1 {
         margin: 100px 0 20px 0;
@@ -55,16 +55,16 @@
         width: 25%;
         border-top: 1px solid rgba($color-blue-dark, .4);
         margin: 0 auto;
+    }
 
-        p {
-            margin: 20px 0;
-            color: $color-blue-dark;
-            text-align: center;
+    p {
+        margin: 20px 0;
+        color: $color-blue-dark;
+        text-align: center;
 
-            a {
-                text-decoration: underline;
-                color: $color-link;
-            }
+        a {
+            text-decoration: underline;
+            color: $color-blue-medium;
         }
     }
 }

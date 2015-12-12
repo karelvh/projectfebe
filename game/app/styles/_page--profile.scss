@@ -1,0 +1,26 @@
+.page--profile {
+
+    .page--profile_header {
+        width: 50%;
+        margin: 0 auto;
+    }
+
+    h1 {
+        text-align: center;
+    }
+
+
+
+    p {
+        margin: 20px 0;
+        text-align: center;
+        a {
+            text-decoration: underline;
+            color: $color-link;
+            margin: 0 auto;
+        }
+    }
+
+
+    .page--profile_body {}
+}

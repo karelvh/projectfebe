@@ -1,20 +1,20 @@
-<div class="page--login">
-    <h1 ng-sho="user.local.username">Welcome, {{user.local.username}}!</h1>
+<div class="page--profile">
+    <div class="page--profile_header">
+        <h1 ng-show="user.local.username">Welcome, {{user.local.username}}!</h1>
 
-    <a logout href="/logout" class="btn btn-link">Logout</a>
-</div>
+        <p>
+            <a logout href="/logout">Logout</a>
+        </p>
+    </div>
 
-<div class="row">
-
-    <!-- LOCAL INFORMATION -->
-    <div class="col-sm-6">
-        <div ng-show="user.local.username" class="jumbotron">
-            <h3><span class="fa fa-user"></span> {{user.local.username}}</h3>
+    <div class="page--profile_body">
+        <!-- LOCAL INFORMATION -->
+        <div ng-show="user.local.username">
             <container>
                 <p>
                     <!-- <strong>id</strong>: {{ user._id }}<br> -->
-                    <strong>username</strong>: {{ user.local.username }}<br>
-                    <strong>high score</strong>: {{ user.local.score }}<br>
+                    <strong>Username</strong>: {{ user.local.username }}<br>
+                    <strong>High Score</strong>: {{ user.local.score }}<br>
                     <!-- <strong>password</strong>: {{ user.local.password }} -->
                 </p>
             </container>
