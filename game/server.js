@@ -45,7 +45,7 @@ console.log('aim all firepower at localhost:' + port);
 /////////////////////////////////////////////////
 
 var counter = 0;
-var BALL_SPEED = 100;
+var BALL_SPEED = 30;
 var WIDTH = 1280;
 var HEIGHT = 720;
 var TANK_INIT_HP = 100;

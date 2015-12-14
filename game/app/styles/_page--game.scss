@@ -4,39 +4,61 @@
         text-align: center;
     }
 
-
-    .name-prompt{
+    .name-prompt {
         position: absolute;
         top: 200px;
         left: 50%;
         margin-left: -200px;
         width: 400px;
-        background-color: #eee;
         z-index: 2;
         padding: 10px;
     }
 
-    .arena{
+    #tank-name {
+        display: none;
+    }
+
+    button {
+        font-size: $font-medium;
+        font-weight: 500;
+        color: $color-white;
+        letter-spacing: 1px;
+        text-decoration: none;
+        background: $color-blue-light;
+        padding:15px 5px;
+        display: block;
+        width: 250px;
+        text-align: center;
+        transition:all 0.2s;
+        margin: 10px auto 40px auto;
+        border: none;
+
+        &:hover {
+            background: $color-green;
+        }
+    }
+
+    .arena {
         margin: 10px auto;
         background-color: white;
         position: relative;
         pointer-events: none;
     }
 
-    .tank{
+    .tank {
         position: absolute;
         background-repeat: no-repeat;
         background-position: -10px 0;
     }
 
-    .explosion{
+    .explosion {
         position: absolute;
         width: 100px;
         height: 120px;
         z-index: 99;
     }
 
-    .tank-cannon{
+    .tank-cannon {
         position: absolute;
         top: -25px;
         width: 60px;
@@ -142,7 +164,6 @@
         width: 33%;
         text-align: center;
         cursor: pointer;
-        border: 2px solid #eee;
         padding: 10px 0;
     }
 

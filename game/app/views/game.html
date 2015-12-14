@@ -11,17 +11,17 @@
 </div>
 
 <div class="page--game">
-    <h1 ng-show="user.local.username">Welcome, {{user.local.username}}!</h1>
+    <h1 ng-show="user.local.username">User: {{user.local.username}}, score: {{user.local.score}}</h1>
 
     <div id="prompt" class="name-prompt">
-        <div class="input-group">
-            <input id="tank-name" type="text" class="form-control" placeholder="Name your tank" autocomplete="off">
-            <span class="input-group-btn">
-                <input id="join" class="btn btn-primary" type="submit" value="Join the battle">
+        <div>
+            <input id="tank-name" type="text" placeholder="Name your tank" autocomplete="off" value={{user.local.username}} disabled="true">
+            <span>
+                <button id="join" type="submit">Join the battle</button>
             </span>
         </div>
-        <div class="tank-select col-md-12">
-            <label>Choose your tank:</label>
+        <div class="tank-select">
+            <label>Choose your team:</label>
             <ul class="tank-selection">
                 <li class="selected" data-tank="1">
                     <img src="dist/img/preview-tank-1.png">
