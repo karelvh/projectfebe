@@ -1,3 +1,15 @@
+<div class="header">
+    <nav class="navbar" role="navigation">
+        <ul>
+            <li><a class="navbar--button_brand" ng-href="/game">GAME</a></li>
+            <li ng-hide="user.local.username"><a ng-href="/login">login</a></li>
+            <li ng-hide="user.local.username"><a ng-href="/signup">register</a></li>
+            <li ng-show="user.local.username"><a ng-href="/profile">profile</a></li>
+            <li ng-show="user.local.username"><a logout class="navbar--button_logout" href="/logout">logout</a></li>
+        </ul>
+    </nav>
+</div>
+
 <div class="page--signup">
 
     <h1>Signup</h1>

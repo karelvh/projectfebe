@@ -13,17 +13,17 @@
 
   </head>
   <body>
-    <div class="header">
+    <!-- <div class="header">
         <nav class="navbar" role="navigation">
             <ul>
                 <li><a class="navbar--button_brand" ng-href="/game">GAME</a></li>
                 <li><a ng-href="/login">login</a></li>
                 <li><a ng-href="/signup">register</a></li>
-                <li><a ng-href="/profile">profile</a></li>
-                <li><a logout class="navbar--button_logout" href="/logout">logout</a></li>
+                <li ng-show="user.local.username"><a ng-href="/profile">profile</a></li>
+                <li ng-show="user.local.username"><a logout class="navbar--button_logout" href="/logout">logout</a></li>
             </ul>
         </nav>
-    </div>
+    </div> -->
 
     <div class="container" ng-view>
     </div>
@@ -33,18 +33,25 @@
     </div>
 
     <!-- inject:js -->
-    <script src="/dist/js/vendor/angular.js"></script>
-    <script src="/dist/js/angular-modules/angular-route.min.js"></script>
+    <script type="text/javascript" src="/dist/js/vendor/angular.js"></script>
+    <script type="text/javascript" src="/dist/js/angular-modules/angular-route.min.js"></script>
     <!-- <script src="/dist/js/app.min.js"></script> -->
-    <script src="/dist/js/growl.js"></script>
+    <script type="text/javascript" src="/dist/js/growl.js"></script>
+    <!-- <script type="text/javascript" src="/dist/js/socket.io.js"></script> -->
     <!-- endinject -->
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular-route.min.js"></script>
-    <script src="scripts/factories/httpInterceptor.js"></script>
-    <script src="scripts/directives/common.js"></script>
-    <script src="scripts/controllers/profile.js"></script>
-    <script src="scripts/controllers/login.js"></script>
-    <script src="scripts/controllers/game.js"></script>
+    <script type="text/javascript" src="scripts/factories/httpInterceptor.js"></script>
+    <script type="text/javascript" src="scripts/directives/common.js"></script>
+    <script type="text/javascript" src="scripts/directives/angular-loadscript.js"></script>
+    <script type="text/javascript" src="scripts/controllers/profile.js"></script>
+    <script type="text/javascript" src="scripts/controllers/login.js"></script>
+    <script type="text/javascript" src="scripts/controllers/game.js"></script>
     <!-- CHECK IF ALL CONTROLLERS ARE INCLUDED IN MAIN.JS -->
-    <script src="scripts/controllers/main.js"></script>
+    <script type="text/javascript" src="scripts/controllers/main.js"></script>
+
+    <script type="text/javascript" src="/dist/js/vendor/jquery.min.js"></script>
+    <script type="text/javascript" src="/dist/js/vendor/socket.io.js"></script>
+    <!-- <script type="text/javascript" src="/dist/js/tanks.js"></script>
+    <script type="text/javascript" src="/dist/js/client.js"></script> -->
 </body>
 </html>

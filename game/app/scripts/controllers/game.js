@@ -8,7 +8,7 @@
                     controllerAs: 'game',
                     caseInsensitiveMatch: true
                 });
-                
+
             $locationProvider.html5Mode(true);
         }])
         .controller('GameController', ['$http', '$scope', '$routeParams', function($http, $scope, $routeParams) {
