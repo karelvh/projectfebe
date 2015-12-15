@@ -1,14 +1,16 @@
 html {
-  position: relative;
-  min-height: 100%;
-  box-sizing: border-box;
+    position: relative;
+    min-height: 100%;
+    box-sizing: border-box;
 }
 
 *, *:before, *:after {
-   box-sizing: inherit;
+    box-sizing: inherit;
 }
 
 body {
-  /* Margin bottom by footer height */
-  margin-bottom: 60px;
+    /* Margin bottom by footer height */
+    margin-bottom: 60px;
+    background-color: $color-blue-dark;
+    color: $color-white;
 }

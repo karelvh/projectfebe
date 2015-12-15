@@ -262,7 +262,11 @@ Game.prototype = {
             $(document).keypress( function(e){
                 var k = e.keyCode || e.which;
                 switch(k){
+                    //unicode character code
                     case 119: //W
+                    t.dir[1] = -1;
+                    break;
+                    case 122: //Z
                     t.dir[1] = -1;
                     break;
                     case 100: //D
@@ -274,12 +278,19 @@ Game.prototype = {
                     case 97: //A
                     t.dir[0] = -1;
                     break;
+                    case 113: //Q
+                    t.dir[0] = -1;
+                    break;
                 }
 
             }).keyup( function(e){
                 var k = e.keyCode || e.which;
                 switch(k){
+                    //unicode key code
                     case 87: //W
+                    t.dir[1] = 0;
+                    break;
+                    case 90: //Z
                     t.dir[1] = 0;
                     break;
                     case 68: //D
@@ -289,6 +300,9 @@ Game.prototype = {
                     t.dir[1] = 0;
                     break;
                     case 65: //A
+                    t.dir[0] = 0;
+                    break;
+                    case 81: //Q
                     t.dir[0] = 0;
                     break;
                 }

@@ -1,7 +1,7 @@
 console.log("client.js loaded"); //dit werkt, dus deze file wordt geladen
 var WIDTH = 1100;
 var HEIGHT = 580;
-var socket = io.connect('localhost');
+var socket = io.connect(window.location.host);
 var game = new Game('#arena', WIDTH, HEIGHT, socket);
 var selectedTank = 1;
 var tankName = '';
