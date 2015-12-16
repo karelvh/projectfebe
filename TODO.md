@@ -4,12 +4,14 @@
 - ~~name the tank after the user. so the user doesn't have to type a name~~
 - Jasmine with a unit test
 - get rid of jQuery: rewrite jQuery parts with vanilla javascript
-- add obstacles to the game (i.e. walls)
+- add obstacles to the game (i.e. sandbags and barrels) (see assets folder)
 - program game ending scenario: when a team has 20 kills they win and the game resets
 - save the score of a user after the game: each kill add 1 point to the score, each death subtracts 1 point from the player's score.
 - allow shooting with space
-- at start op game check if other players are on field
+- at start of game check if other players are on field
 - **killfeed**
-- let users create an account without a password. (placeholder text > Password is not needed but is safer.) This requires some extra checks in passport.js
+- let users create an account without a password. (~~placeholder text > Password is not needed but is safer~~.) This requires some extra checks in passport.js
 - fix balls going out of #arena
 - fix angular getting password client side, angular shouldn't have access to the password only username and score.
+- when moving tank leaves trails (see assets folder)
+- change movement of the tanks, so that: A becomes turning to the left instead of going to the left. This will make the tanks a lot slower and more realistic.
