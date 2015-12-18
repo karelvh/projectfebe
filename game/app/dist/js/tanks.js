@@ -152,6 +152,7 @@ Game.prototype = {
             this.$body = $('#' + this.id);
             this.$body.css('left', this.x + 'px');
             this.$body.css('top', this.y + 'px');
+            // this.$arena.append('<img src="dist/img/smoke/smokeGrey0.png" alt="smoke" id="smoke-' + this.id + '" class="cannon-ball" style="left:' + this.x + 'px; top:'+ this.y+'; "></img>');
         },
 
         explode: function(){
@@ -161,7 +162,7 @@ Game.prototype = {
             $expl.css('top', this.y + 'px');
             setTimeout( function(){
                 $expl.addClass('expand');
-            }, 1);
+            }, 10);
             setTimeout( function(){
                 $expl.remove();
             }, 1000);

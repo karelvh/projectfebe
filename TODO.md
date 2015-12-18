@@ -2,6 +2,7 @@
 - ~~when the user is logged in redirect to '/' but via the home controller you provide the username to angular, on index.html you can then load in the view (in the ng-view container) that's needed (if not logged in the login buttons, if logged in the actual game~~)
 - ~~player moves with azerty~~
 - ~~name the tank after the user. so the user doesn't have to type a name~~
+- ~~when bullet hits tank show impact~~
 - Jasmine with a unit test
 - get rid of jQuery: rewrite jQuery parts with vanilla javascript
 - add obstacles to the game (i.e. sandbags and barrels) (see assets folder)
@@ -15,3 +16,4 @@
 - when moving tank leaves trails (see assets folder)
 - change movement of the tanks, so that: A becomes turning to the left instead of going to the left. This will make the tanks a lot slower and more realistic.
 - leaderboards
+- when shooting show smoke around the cannon.
