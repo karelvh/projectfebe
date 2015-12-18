@@ -6,14 +6,14 @@
 - Jasmine with a unit test
 - get rid of jQuery: rewrite jQuery parts with vanilla javascript
 - add obstacles to the game (i.e. sandbags and barrels) (see assets folder)
-- program game ending scenario: when a team has 20 kills they win and the game resets
+- **program game ending scenario: when a team has 20 kills they win and the game resets**
 - save the score of a user after the game: each kill add 1 point to the score, each death subtracts 1 point from the player's score.
-- allow shooting with space
 - at start of game check if other players are on field
 - **killfeed**
 - fix balls going out of #arena
-- fix angular getting password client side, angular shouldn't have access to the password only username and score.
-- when moving tank leaves trails (see assets folder)
+- moving draws trails (see assets folder)
 - change movement of the tanks, so that: A becomes turning to the left instead of going to the left. This will make the tanks a lot slower and more realistic.
-- leaderboards
+- add two more tank designs
+- different specs for each team.
+- **leaderboards**
 - when shooting show smoke around the cannon.

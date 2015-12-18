@@ -83,11 +83,9 @@
     .ball-explosion{
         position: absolute;
         display: inline-block;
-        // background-color: #873B05;
         width: 50px;
         height: 48px;
         opacity: 1;
-        // border-radius: 5px;
         transition: all 1s ease-out;
         background-image: url(../img/smoke/smokeOrange1.png);
     }
@@ -96,9 +94,6 @@
         width: 50px;
         height: 48px;
         opacity: 0;
-        // margin-left: -25px;
-        // margin-top: -25px;
-        // border-radius: 25px;
     }
 
     .info{
