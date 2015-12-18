@@ -10,8 +10,8 @@
 - allow shooting with space
 - at start of game check if other players are on field
 - **killfeed**
-- let users create an account without a password. (~~placeholder text > Password is not needed but is safer~~.) This requires some extra checks in passport.js
 - fix balls going out of #arena
 - fix angular getting password client side, angular shouldn't have access to the password only username and score.
 - when moving tank leaves trails (see assets folder)
 - change movement of the tanks, so that: A becomes turning to the left instead of going to the left. This will make the tanks a lot slower and more realistic.
+- leaderboards

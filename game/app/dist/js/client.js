@@ -1,6 +1,5 @@
-console.log("client.js loaded"); //dit werkt, dus deze file wordt geladen
-var WIDTH = 1100;
-var HEIGHT = 580;
+var WIDTH = 1280;
+var HEIGHT = 720;
 var socket = io.connect(window.location.host);
 var game = new Game('#arena', WIDTH, HEIGHT, socket);
 var selectedTank = 1;
@@ -23,7 +22,6 @@ socket.on('removeTank', function(tankId){
 });
 
 $(document).ready( function(){
-    console.log("client.js doc ready");
 
     $('#join').click( function(){
         console.log("client.js clicked join button");

@@ -24,6 +24,7 @@ module.exports = function(passport) {
         passReqToCallback : true // allows us to pass in the req from our route (lets us check if a user is logged in or not)
     },
     function(req, username, password, done) {
+    // function(req, username, done) {
         if (username) {
             username = username.toLowerCase();
         }
@@ -61,8 +62,11 @@ module.exports = function(passport) {
         passReqToCallback : true // allows us to pass in the req from our route (lets us check if a user is logged in or not)
     },
     function(req, username, password, done) {
+    // function(req, username, done) {
         if (username) {
             username = username.toLowerCase();
+
+            console.log("lowercase");
         }
 
         process.nextTick(function() {
@@ -75,10 +79,22 @@ module.exports = function(passport) {
                 function(err, user) {
                     //in case of errors return them
                     if (err) {
+
+                        console.log("error: " + err);
+
                         return done(err);
                     }
+                    // if (!user) {
                     if (user) {
+
+                        console.log("not available");
                         return done(null, { error: "That username isn't available anymore." });
+
+                        // var newUser = new User();
+                        // newUser.local.username = username;
+                        // newUser.save();
+                        // return done(null, newUser);
+
                     }
                     //if everything goes according to plan
                     else {
@@ -93,12 +109,16 @@ module.exports = function(passport) {
                                 throw err;
                             }
                             console.log(newUser);
+
+                            console.log("save");
                             return done(null, newUser);
                         });
                     }
                 });
             }
             else {
+                console.log("already logged in");
+
                 //the user is already logged in so can't create a new local account
                 return done(null, req.user);
             }

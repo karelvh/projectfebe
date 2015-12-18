@@ -1,7 +1,6 @@
-console.log("tanks.js loaded"); //dit werkt, dus deze file wordt geladen
 var DEBUG = true;
 var INTERVAL = 50;
-var ROTATION_SPEED = 5;
+var ROTATION_SPEED = 3;
 var ARENA_MARGIN = 30;
 
 function Game(arenaId, w, h, socket){
@@ -117,25 +116,24 @@ Game.prototype = {
                     found = true;
                 }
             });
-            if(!found &&
-                (game.localTank === undefined || serverTank.id !== game.localTank.id)){
-                    //I need to create it
-                    game.addTank(serverTank.id, serverTank.type, false, serverTank.x, serverTank.y, serverTank.hp);
-                }
-            });
+            if(!found && (game.localTank === undefined || serverTank.id !== game.localTank.id)){
+                //I need to create it
+                game.addTank(serverTank.id, serverTank.type, false, serverTank.x, serverTank.y, serverTank.hp);
+            }
+        });
 
-            //Render balls
-            game.$arena.find('.cannon-ball').remove();
+        //Render balls
+        game.$arena.find('.cannon-ball').remove();
 
-            serverData.balls.forEach( function(serverBall){
-                var b = new Ball(serverBall.id, serverBall.ownerId, game.$arena, serverBall.x, serverBall.y);
-                b.exploding = serverBall.exploding;
-                if(b.exploding){
-                    b.explode();
-                }
-            });
-        }
-    };
+        serverData.balls.forEach( function(serverBall){
+            var b = new Ball(serverBall.id, serverBall.ownerId, game.$arena, serverBall.x, serverBall.y);
+            b.exploding = serverBall.exploding;
+            if(b.exploding){
+                b.explode();
+            }
+        });
+    }
+};
 
     function Ball(id, ownerId, $arena, x, y){
         this.id = id;
@@ -335,108 +333,110 @@ Game.prototype = {
 
         /* Rotate base of tank to match movement direction */
         rotateBase: function(){
-            if((this.dir[0] == 1 && this.dir[1] == 1) || (this.dir[0] == -1 && this.dir[1] == -1)){ //diagonal "left"
-            this.setDiagonalLeft();
-        }else if((this.dir[0] == 1 && this.dir[1] == -1) || (this.dir[0] == -1 && this.dir[1] == 1)){ //diagonal "right"
-        this.setDiagonalRight();
-    }else if(this.dir[1] == 1 || this.dir[1] == -1){ //vertical
-        this.setVertical();
-    }else if(this.dir[0] == 1 || this.dir[0] == -1){  //horizontal
-        this.setHorizontal();
-    }
+            if((this.dir[0] == 1 && this.dir[1] == 1) || (this.dir[0] == -1 && this.dir[1] == -1)){
+                //diagonal "left"
+                this.setDiagonalLeft();
+            }else if((this.dir[0] == 1 && this.dir[1] == -1) || (this.dir[0] == -1 && this.dir[1] == 1)){
+                //diagonal "right"
+                this.setDiagonalRight();
+            }else if(this.dir[1] == 1 || this.dir[1] == -1){
+                //vertical
+                this.setVertical();
+            }else if(this.dir[0] == 1 || this.dir[0] == -1){
+                //horizontal
+                this.setHorizontal();
+            }
+        },
 
-},
+        /* Rotate base until it is vertical */
+        setVertical: function(){
+            var a = this.baseAngle;
+            if(a !== 0 && a !== 180){
+                if(a < 90 || (a > 180 && a < 270)){
+                    this.decreaseBaseRotation();
+                }else{
+                    this.increaseBaseRotation();
+                }
+            }
+        },
 
-/* Rotate base until it is vertical */
-setVertical: function(){
-    var a = this.baseAngle;
-    if(a !== 0 && a !== 180){
-        if(a < 90 || (a > 180 && a < 270)){
-            this.decreaseBaseRotation();
-        }else{
-            this.increaseBaseRotation();
+        /* Rotate base until it is horizontal */
+        setHorizontal: function(){
+            var a = this.baseAngle;
+            if(a !== 90 && a !== 270){
+                if(a < 90 || (a > 180 && a < 270)){
+                    this.increaseBaseRotation();
+                }else{
+                    this.decreaseBaseRotation();
+                }
+            }
+        },
+
+        setDiagonalLeft: function(){
+            var a = this.baseAngle;
+            if(a !== 135 && a !== 315){
+                if(a < 135 || (a > 225 && a < 315)){
+                    this.increaseBaseRotation();
+                }else{
+                    this.decreaseBaseRotation();
+                }
+            }
+        },
+
+        setDiagonalRight: function(){
+            var a = this.baseAngle;
+            if(a !== 45 && a !== 225){
+                if(a < 45 || (a > 135 && a < 225)){
+                    this.increaseBaseRotation();
+                }else{
+                    this.decreaseBaseRotation();
+                }
+            }
+        },
+
+        increaseBaseRotation: function(){
+            this.baseAngle += ROTATION_SPEED;
+            if(this.baseAngle >= 360){
+                this.baseAngle = 0;
+            }
+        },
+
+        decreaseBaseRotation: function(){
+            this.baseAngle -= ROTATION_SPEED;
+            if(this.baseAngle < 0){
+                this.baseAngle = 0;
+            }
+        },
+
+        setCannonAngle: function(mx, my){
+            var tank = { x: this.x , y: this.y};
+            var mouse = { x: mx, y: my};
+            var deltaX = mouse.x - tank.x;
+            var deltaY = mouse.y - tank.y;
+            this.cannonAngle = Math.atan2(deltaY, deltaX) * 180 / Math.PI;
+            this.cannonAngle += 90;
+        },
+
+        shoot: function(){
+            if(this.dead){
+                return;
+            }
+
+            //Emit ball to server
+            var serverBall = {};
+            //Just for local balls who have owner
+            serverBall.alpha = this.cannonAngle * Math.PI / 180; //angle of shot in radians
+            //Set init position
+            var cannonLength = 30;
+            var deltaX = cannonLength * Math.sin(serverBall.alpha);
+            var deltaY = cannonLength * Math.cos(serverBall.alpha);
+
+            serverBall.ownerId = this.id;
+            serverBall.x = this.x + deltaX - 5;
+            serverBall.y = this.y - deltaY - 5;
+
+            this.game.socket.emit('shoot', serverBall);
         }
-    }
-},
-
-/* Rotate base until it is horizontal */
-setHorizontal: function(){
-    var a = this.baseAngle;
-    if(a !== 90 && a !== 270){
-        if(a < 90 || (a > 180 && a < 270)){
-            this.increaseBaseRotation();
-        }else{
-            this.decreaseBaseRotation();
-        }
-    }
-},
-
-setDiagonalLeft: function(){
-    var a = this.baseAngle;
-    if(a !== 135 && a !== 315){
-        if(a < 135 || (a > 225 && a < 315)){
-            this.increaseBaseRotation();
-        }else{
-            this.decreaseBaseRotation();
-        }
-    }
-},
-
-setDiagonalRight: function(){
-    var a = this.baseAngle;
-    if(a !== 45 && a !== 225){
-        if(a < 45 || (a > 135 && a < 225)){
-            this.increaseBaseRotation();
-        }else{
-            this.decreaseBaseRotation();
-        }
-    }
-},
-
-increaseBaseRotation: function(){
-    this.baseAngle += ROTATION_SPEED;
-    if(this.baseAngle >= 360){
-        this.baseAngle = 0;
-    }
-},
-
-decreaseBaseRotation: function(){
-    this.baseAngle -= ROTATION_SPEED;
-    if(this.baseAngle < 0){
-        this.baseAngle = 0;
-    }
-},
-
-setCannonAngle: function(mx, my){
-    var tank = { x: this.x , y: this.y};
-    var mouse = { x: mx, y: my};
-    var deltaX = mouse.x - tank.x;
-    var deltaY = mouse.y - tank.y;
-    this.cannonAngle = Math.atan2(deltaY, deltaX) * 180 / Math.PI;
-    this.cannonAngle += 90;
-},
-
-shoot: function(){
-    if(this.dead){
-        return;
-    }
-
-    //Emit ball to server
-    var serverBall = {};
-    //Just for local balls who have owner
-    serverBall.alpha = this.cannonAngle * Math.PI / 180; //angle of shot in radians
-    //Set init position
-    var cannonLength = 60;
-    var deltaX = cannonLength * Math.sin(serverBall.alpha);
-    var deltaY = cannonLength * Math.cos(serverBall.alpha);
-
-    serverBall.ownerId = this.id;
-    serverBall.x = this.x + deltaX - 5;
-    serverBall.y = this.y - deltaY - 5;
-
-    this.game.socket.emit('shoot', serverBall);
-}
-
 };
 
 function debug(msg){
