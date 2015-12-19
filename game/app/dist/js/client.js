@@ -2,7 +2,7 @@ var WIDTH = 1280;
 var HEIGHT = 720;
 var socket = io.connect(window.location.host);
 var game = new Game('#arena', WIDTH, HEIGHT, socket);
-var selectedTank = 1;
+var selectedTank = "Blue";
 var tankName = '';
 
 socket.on('addTank', function(tank){
@@ -21,10 +21,29 @@ socket.on('removeTank', function(tankId){
     game.removeTank(tankId);
 });
 
+//KILLFEED
+socket.on("serverMessage", function(json){
+    showMessage(JSON.parse(json));
+});
+
+var lastMsg; //bijhouden laatste message div voor insertBefore
+function showMessage(obj) {
+    console.log("show message");
+    var messages = document.getElementById("messages");
+    var newMsg = document.createElement("div");
+    // newMsgID = "message" + messageID;
+    newMsg.setAttribute("class", "message");
+
+    newMsg.appendChild(document.createTextNode( obj.content));
+
+    messages.appendChild(newMsg);
+
+    setTimeout(function(){ messages.removeChild(messages.childNodes[0]); }, 3000);
+}
+
 $(document).ready( function(){
 
     $('#join').click( function(){
-        console.log("client.js clicked join button");
         tankName = $('#tank-name').val();
         joinGame(tankName, selectedTank, socket);
     });

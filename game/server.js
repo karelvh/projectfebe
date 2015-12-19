@@ -159,6 +159,11 @@ io.on('connection', function(client) {
         client.broadcast.emit('addTank', { id: tank.id, type: tank.type, isLocal: false, x: initX, y: initY, hp: TANK_INIT_HP} );
 
         game.addTank({ id: tank.id, type: tank.type, hp: TANK_INIT_HP});
+
+        //killfeed join
+        client.emit("serverMessage", JSON.stringify({id : tank.id , content: "You are logged in as " + tank.id }));
+        //send message to other clients
+        client.broadcast.emit("serverMessage", JSON.stringify({id : tank.id , content: tank.id + " is logged in." }));
     });
 
     client.on('sync', function(data) {
@@ -189,6 +194,15 @@ io.on('connection', function(client) {
         game.removeTank(tankId);
         client.broadcast.emit('removeTank', tankId);
     });
+
+    //KILLFEED
+    // client.on('message', function(content){
+    //     //emit laat toe een json object te sturen
+    //     var obj = {id : tank.id , content: content };
+    //
+    //     client.emit('serverMessage', JSON.stringify(obj)); //naar zichzelf
+    //     client.broadcast.emit('serverMessage', JSON.stringify(obj)); // naar andere clients only
+    // });
 
 });
 

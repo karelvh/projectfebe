@@ -3,6 +3,7 @@
 - ~~player moves with azerty~~
 - ~~name the tank after the user. so the user doesn't have to type a name~~
 - ~~when bullet hits tank show impact~~
+- ~~add two more tank designs~~
 - Jasmine with a unit test
 - get rid of jQuery: rewrite jQuery parts with vanilla javascript
 - add obstacles to the game (i.e. sandbags and barrels) (see assets folder)
@@ -11,9 +12,8 @@
 - at start of game check if other players are on field
 - **killfeed**
 - fix balls going out of #arena
-- moving draws trails (see assets folder)
+- moving tank draws trails (see assets folder)
 - change movement of the tanks, so that: A becomes turning to the left instead of going to the left. This will make the tanks a lot slower and more realistic.
-- add two more tank designs
 - different specs for each team.
 - **leaderboards**
 - when shooting show smoke around the cannon.

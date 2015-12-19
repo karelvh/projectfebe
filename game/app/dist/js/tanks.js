@@ -175,8 +175,8 @@ Game.prototype = {
         this.type = type;
         this.speed = 5;
         this.$arena = $arena;
-        this.w = 60;
-        this.h = 80;
+        this.w = 78;
+        this.h = 83;
         this.baseAngle = getRandomInt(0, 360);
         //Make multiple of rotation amount
         this.baseAngle -= (this.baseAngle % ROTATION_SPEED);
