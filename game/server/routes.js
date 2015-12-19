@@ -8,6 +8,9 @@ module.exports = function(app, passport) {
     //LOGIN ROUTE
     //get data from login form
     app.post('/login', function(req, res, next) {
+        // If this function gets called, authentication was successful.
+        // `req.user` contains the authenticated user.
+
         // if (!req.body.username || !req.body.password) {
         //     return res.json({ error: 'Username and Password required' });
         // }
@@ -56,7 +59,7 @@ module.exports = function(app, passport) {
                 if (err) {
                     return res.json(err);
                 }
-                //back to the homepage where angular will hide the login/sign up nuttons and show the game
+                //back to the homepage where angular will hide the login/sign up buttons and show the game
                 // return res.json({ redirect: '/' });
 
                 //temp debug redirect
@@ -89,7 +92,7 @@ function isLoggedInAjax(req, res, next) {
 // route middleware to ensure user is logged in
 function isLoggedIn(req, res, next) {
     if (req.isAuthenticated()) {
-        return next();    
+        return next();
     }
     res.redirect('/');
 }

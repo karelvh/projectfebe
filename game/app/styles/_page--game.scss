@@ -52,7 +52,7 @@
     .tank {
         position: absolute;
         background-repeat: no-repeat;
-        background-position: -10px 0;
+        background-position: -2px 2px;
     }
 
     .explosion {
@@ -64,15 +64,16 @@
 
     .tank-cannon {
         position: absolute;
-        top: -27px;
-        width: 60px;
-        height: 80px;
-        background-image: url(../img/tank-cannon.png);
-        background-position: -10px 0;
-        transform-origin: 30px 75px;
+        top: -37px;
+        width: 78px;
+        height: 83px;
+        background-image: url(../img/tank/tank-cannon.png);
+        background-repeat: no-repeat;
+        background-position: -3px -1px;
+        transform-origin: 39px 83px;
     }
 
-    .cannon-ball{
+    .cannon-ball {
         position: absolute;
         width: 10px;
         height: 10px;
@@ -80,7 +81,7 @@
         background-color: #5e5e5e;
     }
 
-    .ball-explosion{
+    .ball-explosion {
         position: absolute;
         display: inline-block;
         width: 50px;
@@ -90,24 +91,24 @@
         background-image: url(../img/smoke/smokeOrange1.png);
     }
 
-    .ball-explosion.expand{
+    .ball-explosion.expand {
         width: 50px;
         height: 48px;
         opacity: 0;
     }
 
-    .info{
+    .info {
         width: 100px;
         height: 40px;
         position: absolute;
         top: 0;
         left: 0;
         margin-top: -85px;
-        margin-left: -50px;
+        margin-left: -40px;
         opacity: .8;
     }
 
-    .label{
+    .label {
         font-size: 12px;
         text-align: center;
         width: 100px;
@@ -116,18 +117,18 @@
         display: inline-block;
     }
 
-    .hp-bar{
+    .hp-bar {
         width: 100px;
         height: 4px;
         background-color: #7DD12C;
         margin: 0 auto;
     }
 
-    .fade{
+    .fade {
         opacity: .3;
     }
 
-    .tank-selection{
+    .tank-selection {
         display: inline-block;
         width: 350px;
         padding: 0;
@@ -135,14 +136,14 @@
         margin: 20px auto 0 auto;
     }
 
-    .tank-select label{
+    .tank-select label {
         display: inline-block;
         margin: 10px 0;
         width: 100%;
         text-align: center;
     }
 
-    .tank-selection li{
+    .tank-selection li {
         display: inline-block;
         float: left;
         width: 33%;
@@ -151,21 +152,27 @@
         padding: 10px 0;
     }
 
-    .tank-selection .selected{
+    .tank-selection .selected {
         border: 2px solid #158cba;
         border-radius: 5px;
     }
 
     /* skins */
-    .tank1{
-        background-image: url(../img/tank-1-base.png);
+    .tankBlue {
+        background-image: url(../img/tank/tankBlue.png);
     }
 
-    .tank2{
-        background-image: url(../img/tank-2-base.png);
+    .tankGreen {
+        background-image: url(../img/tank/tankGreen.png);
     }
 
-    .tank3{
-        background-image: url(../img/tank-3-base.png);
+    .tankRed {
+        background-image: url(../img/tank/tankRed.png);
+    }
+
+    #messages {
+        color: $color-white;
+        margin-left: 5px;
+        margin-top: 10px;
     }
 }
