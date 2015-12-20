@@ -96,6 +96,11 @@ Game.prototype = {
                 game.localTank.hp = serverTank.hp;
                 if(game.localTank.hp <= 0){
                     game.killTank(game.localTank);
+
+                    console.log(game.localTank);
+                    console.log(game.socket);
+                    //killfeed join
+                    game.socket.emit("killMessage", JSON.stringify({id : game.localTank.id , content: game.localTank.id + " was killed."}));
                 }
             }
 
@@ -428,12 +433,12 @@ Game.prototype = {
             //Just for local balls who have owner
             serverBall.alpha = this.cannonAngle * Math.PI / 180; //angle of shot in radians
             //Set init position
-            var cannonLength = 30;
+            var cannonLength = 40;
             var deltaX = cannonLength * Math.sin(serverBall.alpha);
             var deltaY = cannonLength * Math.cos(serverBall.alpha);
 
             serverBall.ownerId = this.id;
-            serverBall.x = this.x + deltaX - 5;
+            serverBall.x = this.x + deltaX + 5;
             serverBall.y = this.y - deltaY - 5;
 
             this.game.socket.emit('shoot', serverBall);

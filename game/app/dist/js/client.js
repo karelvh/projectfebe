@@ -14,6 +14,7 @@ socket.on('sync', function(gameServerData){
 });
 
 socket.on('killTank', function(tankData){
+
     game.killTank(tankData);
 });
 
@@ -28,7 +29,7 @@ socket.on("serverMessage", function(json){
 
 var lastMsg; //bijhouden laatste message div voor insertBefore
 function showMessage(obj) {
-    console.log("show message");
+    // console.log("show message");
     var messages = document.getElementById("messages");
     var newMsg = document.createElement("div");
     // newMsgID = "message" + messageID;

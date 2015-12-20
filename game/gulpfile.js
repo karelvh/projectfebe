@@ -29,7 +29,7 @@ gulp.task("js", function(){
     .pipe(sourcemaps.init())
     .pipe(concat("app.min.js"))
     .pipe(sourcemaps.write())
-    //disable for deployment
+    //enable for deployment
     // .pipe(uglify())
     .pipe(gulp.dest('./app/dist/js'))
     .pipe(notify({message: 'js built'}));
@@ -46,8 +46,8 @@ gulp.task("css", function () {
     .pipe(sourcemaps.init())
     .pipe(concat("app.min.css"))
     .pipe(sourcemaps.write())
-    //disable for deployment
-    // .pipe(cssMinifier())
+    //enable for deployment
+    .pipe(cssMinifier())
     .pipe(gulp.dest("./app/dist/css"))
     .pipe(notify({message: 'stylesheet built'}));
 });

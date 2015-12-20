@@ -161,9 +161,17 @@ io.on('connection', function(client) {
         game.addTank({ id: tank.id, type: tank.type, hp: TANK_INIT_HP});
 
         //killfeed join
+        //send message to sender
         client.emit("serverMessage", JSON.stringify({id : tank.id , content: "You are logged in as " + tank.id }));
         //send message to other clients
         client.broadcast.emit("serverMessage", JSON.stringify({id : tank.id , content: tank.id + " is logged in." }));
+    });
+
+    client.on('killMessage', function(json) {
+        client.emit("serverMessage", JSON.stringify({id : "game.localTank.id" , content: "You were killed."}));
+        // console.log("============================kill message");
+        //send message to other clients
+        client.broadcast.emit("serverMessage", json);
     });
 
     client.on('sync', function(data) {
@@ -177,11 +185,11 @@ io.on('connection', function(client) {
         client.emit('sync', game.getData());
         client.broadcast.emit('sync', game.getData());
 
-        //I do the cleanup after sending data, so the clients know
-        //when the tank dies and when the balls explode
+        //cleanup after sending data, this way the clients know when the tank dies and when the balls explode
         game.cleanDeadTanks();
         game.cleanDeadBalls();
-        counter ++;
+        // counter ++;
+        // console.log(counter + " syncs");
     });
 
     client.on('shoot', function(ball) {
@@ -190,20 +198,11 @@ io.on('connection', function(client) {
     });
 
     client.on('leaveGame', function(tankId) {
+        client.broadcast.emit("serverMessage", JSON.stringify({id : tankId , content: tankId + " has left the game." }));
         console.log(tankId + ' has left the game');
         game.removeTank(tankId);
         client.broadcast.emit('removeTank', tankId);
     });
-
-    //KILLFEED
-    // client.on('message', function(content){
-    //     //emit laat toe een json object te sturen
-    //     var obj = {id : tank.id , content: content };
-    //
-    //     client.emit('serverMessage', JSON.stringify(obj)); //naar zichzelf
-    //     client.broadcast.emit('serverMessage', JSON.stringify(obj)); // naar andere clients only
-    // });
-
 });
 
 function Ball(ownerId, alpha, x, y) {
