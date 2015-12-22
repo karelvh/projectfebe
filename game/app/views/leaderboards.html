@@ -11,9 +11,15 @@
     </nav>
 </div>
 
-<div class="page--main">
-    <h1>AWESOME GAME</h1>
-    <h2>Login or Register to start playing:</h2>
-    <a href="/login">Login</a>
-    <a href="/signup">Register</a>
+<div class="page--leaderboards">
+    <div class="page--leaderboards_header">
+        <!-- <h1>{{ leaderboards.length }} scores!</h1> -->
+        <h1>Leaderboard</h1>
+    </div>
+
+    <div class="page--leaderboards_body">
+        <div ng-repeat="leaderboard in leaderboards | orderBy:'-local.score'">
+            <p class="score_row"><span>User: </span>{{ leaderboard.local.username }} - <span>Score: </span> {{ leaderboard.local.score }}</p>
+        </div>
+    </div>
 </div>

@@ -9,7 +9,7 @@
                         window.location = attrs.href;
                     });
                 }
-            }
+            };
         }])
         .directive('logout', ['$http', function($http) {
             return {
@@ -20,6 +20,6 @@
                         $http.post('/logout');
                     });
                 }
-            }
+            };
         }]);
 })();

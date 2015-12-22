@@ -1,0 +1,33 @@
+//import in app.scss
+.page--leaderboards {
+
+    h1 {
+        text-align: center;
+    }
+
+    .page--leaderboards_header {
+        width: 50%;
+        margin: 0 auto;
+    }
+
+    .page--leaderboards_body {
+
+    }
+
+    .score_row {
+        margin: 0 auto;
+        width: 30%;
+        text-align: center;
+        border-bottom: 1px solid $color-white;
+        border-bottom: 1px solid rgba($color-white, .2);
+        // height: 2em;
+        padding: 1em;
+        font-weight: 700;
+        font-size: $font-big;
+
+        span {
+            color: $color-blue-light;
+            font-size: $font-medium;
+        }
+    }
+}
