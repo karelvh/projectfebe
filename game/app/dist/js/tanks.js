@@ -97,8 +97,8 @@ Game.prototype = {
                 if(game.localTank.hp <= 0){
                     game.killTank(game.localTank);
 
-                    console.log(game.localTank);
-                    console.log(game.socket);
+                    console.table(game.localTank);
+                    console.table(game.socket);
                     //killfeed join
                     game.socket.emit("killMessage", JSON.stringify({id : game.localTank.id , content: game.localTank.id + " was killed."}));
                 }
