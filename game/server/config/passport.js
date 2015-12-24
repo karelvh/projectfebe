@@ -48,7 +48,9 @@ module.exports = function(passport) {
                 }
                 //if everything goes according to plan
                 else {
-                    console.log(user);
+                    //so the salted password doesnt get logged.
+                    user.local.password = undefined;
+                    //console.log(user);
                     return done(null, user);
                 }
             });
@@ -65,8 +67,6 @@ module.exports = function(passport) {
     // function(req, username, done) {
         if (username) {
             username = username.toLowerCase();
-
-            console.log("lowercase");
         }
 
         process.nextTick(function() {
@@ -79,22 +79,13 @@ module.exports = function(passport) {
                 function(err, user) {
                     //in case of errors return them
                     if (err) {
-
                         console.log("error: " + err);
-
                         return done(err);
                     }
                     // if (!user) {
                     if (user) {
-
-                        console.log("not available");
+                        //console.log("not available");
                         return done(null, { error: "That username isn't available anymore." });
-
-                        // var newUser = new User();
-                        // newUser.local.username = username;
-                        // newUser.save();
-                        // return done(null, newUser);
-
                     }
                     //if everything goes according to plan
                     else {
@@ -108,17 +99,16 @@ module.exports = function(passport) {
                             if (err) {
                                 throw err;
                             }
-                            console.log(newUser);
-
-                            console.log("save");
+                            newUser.local.password = undefined;
+                            //console.log(newUser);
+                            //console.log("save");
                             return done(null, newUser);
                         });
                     }
                 });
             }
             else {
-                console.log("already logged in");
-
+                //console.log("already logged in");
                 //the user is already logged in so can't create a new local account
                 return done(null, req.user);
             }

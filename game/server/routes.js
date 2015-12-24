@@ -33,10 +33,7 @@ module.exports = function(app, passport) {
                 if (err) {
                     return res.json(err);
                 }
-                //back to the homepage where angular will hide the login/sign up nuttons and show the game
-                // return res.json({ redirect: '/' });
-
-                //temp debug redirect
+                //back to the homepage where angular will hide the login/sign up buttons and show the game
                 return res.json({ redirect: '/game' });
             });
         })(req, res);
@@ -63,9 +60,6 @@ module.exports = function(app, passport) {
                     return res.json(err);
                 }
                 //back to the homepage where angular will hide the login/sign up buttons and show the game
-                // return res.json({ redirect: '/' });
-
-                //temp debug redirect
                 return res.json({ redirect: '/game' });
             });
         })(req, res);
@@ -73,6 +67,8 @@ module.exports = function(app, passport) {
 
     //so angular can use /api/userData in the pages
     app.get('/api/userData', isLoggedInAjax, function(req, res) {
+        //this way the salted password doesn't get passed to angular
+        req.user.local.password = undefined;
         return res.json(req.user);
     });
 
