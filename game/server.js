@@ -172,6 +172,7 @@ io.on('connection', function(client) {
         // console.log("============================kill message");
         //send message to other clients
         client.broadcast.emit("serverMessage", json);
+        client.emit("showPrompt");
     });
 
     client.on('sync', function(data) {

@@ -202,7 +202,7 @@ Game.prototype = {
         materialize: function(){
             //for some reason this function gets run twice.
             //when the client was connected to the server before a server restart.
-            console.log("append");
+            // console.log("append");
             this.$arena.append('<div id="' + this.id + '" class="tank tank' + this.type + '"></div>');
             this.$body = $('#' + this.id);
             this.$body.css('width', this.w);
