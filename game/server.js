@@ -49,6 +49,7 @@ var BALL_SPEED = 30;
 var WIDTH = 1280;
 var HEIGHT = 720;
 var TANK_INIT_HP = 100;
+var BALL_DAMAGE = 20;
 
 var io = require('socket.io')(server);
 
@@ -114,7 +115,7 @@ GameServer.prototype = {
     },
 
     hurtTank: function(tank) {
-        tank.hp -= 20;
+        tank.hp -= BALL_DAMAGE;
     },
 
     getData: function() {
@@ -217,7 +218,6 @@ function Ball(ownerId, alpha, x, y) {
 }
 
 Ball.prototype = {
-
     fly: function() {
         //move to trayectory
         var speedX = BALL_SPEED * Math.sin(this.alpha);
