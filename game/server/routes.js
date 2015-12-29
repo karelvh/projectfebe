@@ -68,6 +68,8 @@ module.exports = function(app, passport) {
     //so angular can use /api/userData in the pages
     app.get('/api/userData', isLoggedInAjax, function(req, res) {
         //this way the salted password doesn't get passed to angular
+        //json doesn't support 'undefined' so the password key won't be passed
+        //personnaly think this is better than passing 'null' to password since this will pass a password key to the //  angular scope surfacing the structure of the database.
         req.user.local.password = undefined;
         return res.json(req.user);
     });
