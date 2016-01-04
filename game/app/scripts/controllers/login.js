@@ -39,7 +39,7 @@
                         password: this.password
                     })
                     .success(function(data) {
-                        console.log(data);
+                        //console.log(data);
                     });
             }
         }])
@@ -51,7 +51,7 @@
                         password: this.password
                     })
                     .success(function(data) {
-                        console.log(data);
+                        //console.log(data);
                     });
             }
         }])
