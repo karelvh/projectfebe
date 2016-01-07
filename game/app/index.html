@@ -3,7 +3,12 @@
   <head>
     <base href="/"> <!-- needed for html5mode -->
     <meta charset="utf-8">
-    <title></title>
+    <title>FEBE Game</title>
+    <style media="screen">
+        [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+            display: none !important;
+        }
+    </style>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
     <!-- inject:css -->
@@ -12,7 +17,7 @@
     <!-- endinject -->
 
   </head>
-  <body>
+  <body ng-cloak>
     <!-- <div class="header">
         <nav class="navbar" role="navigation">
             <ul>
