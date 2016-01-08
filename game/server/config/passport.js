@@ -97,7 +97,8 @@ module.exports = function(passport) {
                         //save in the database
                         newUser.save(function(err) {
                             if (err) {
-                                throw err;
+                                // throw err;
+                                return done(null, { error: "error" });
                             }
                             newUser.local.password = undefined;
                             //console.log(newUser);

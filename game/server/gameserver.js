@@ -1,3 +1,5 @@
+var User = require('./models/user.js');
+
 module.exports = function(server) {
 
     var counter = 0;
@@ -129,7 +131,33 @@ module.exports = function(server) {
             // console.log("============================kill message");
             //send message to other clients
             client.broadcast.emit("serverMessage", json);
-            client.emit("showPrompt");
+            client.emit("showTankSelection");
+
+            //subtract a point from the score of the killed tank.
+            obj = JSON.parse(json);
+            process.nextTick(function() {
+                User.findOne({
+                    'local.username': obj.id
+                },
+                function(err, user) {
+                    //in case of errors return them
+                    if (err) {
+                        console.log('error saving score');
+                    }
+                    //if everything goes according to plan
+                    else {
+                        var score = user.local.score;
+                        user.local.score = score - 1;
+                        user.save(function(err) {
+                            if (err) {
+                                console.log('error saving score');
+                            }
+                            user.local.password = undefined;
+                            // console.log(user);
+                        });
+                    }
+                });
+            });
         });
 
         client.on('sync', function(data) {

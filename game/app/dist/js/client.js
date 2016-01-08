@@ -26,9 +26,9 @@ socket.on("serverMessage", function(json) {
     showMessage(JSON.parse(json));
 });
 
-socket.on("showPrompt", function() {
+socket.on("showTankSelection", function() {
     // console.log("showing prompt");
-    $('#prompt').show();
+    $('#tankSelectionBox').show();
 });
 
 var lastMsg; //bijhouden laatste message div voor insertBefore
@@ -75,7 +75,7 @@ $(window).on('beforeunload', function() {
 
 function joinGame(tankName, tankType, socket) {
     if(tankName !== ''){
-        $('#prompt').hide();
+        $('#tankSelectionBox').hide();
         socket.emit('joinGame', {id: tankName, type: tankType});
     }
 }

@@ -6,7 +6,7 @@ var userSchema = mongoose.Schema({
     local: {
         //all field are not required by default so validate in passport login/signup logic
         username: { type: String, unique: true},
-        password: { type: String, required: false},
+        password: { type: String },
         score: Number
     }
 });
