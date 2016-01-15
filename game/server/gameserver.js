@@ -59,6 +59,7 @@ module.exports = function(server) {
         },
 
         //Detect if ball collides with any tank
+        //hit detection
         detectCollision: function(ball) {
             var self = this;
 
